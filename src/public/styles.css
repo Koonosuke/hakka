@@ -6,39 +6,56 @@ body {
 .container {
     margin-top: 20px;
 }
-.card {
+.form-container {
     margin-bottom: 20px;
 }
-.card-header {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px;
-    border-bottom: none;
-}
-.card-title {
-    margin: 0;
-    font-size: 1.2em;
+.form-group label {
+    font-weight: bold;
 }
 .btn-primary, .btn-success, .btn-danger {
     width: 100%;
     margin-top: 10px;
+    transition: background-color 0.3s, transform 0.3s;
 }
-.btn:hover {
-    opacity: 0.8;
+.btn-primary:hover, .btn-success:hover, .btn-danger:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
 }
 .table {
     margin-top: 20px;
 }
-.table-striped tbody tr:nth-of-type(odd) {
-    background-color: #f2f2f2;
-}
-.table-bordered th, .table-bordered td {
-    border: 1px solid #dee2e6;
-}
 .chart-container {
-    height: 300px;
-    position: relative;
+    height: 300px; /* 統一された高さを指定 */
+    position: relative; /* 位置を相対にしてキャンバスを拡大 */
 }
 .chart-container canvas {
-    height: 100% !important;
+    height: 100% !important; /* キャンバスの高さを親に合わせる */
+}
+.card-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+.card:hover {
+    transform: translateY(-10px);
+}
+.card-header {
+    background-color: #778391;
+    color: white;
+    border-radius: 10px 10px 0 0;
+}
+.card-body {
+    background-color: white;
+}
+.text-center {
+    color: #040404;
+}
+h1 {
+    color: #080808;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
 }
