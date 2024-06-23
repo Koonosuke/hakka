@@ -1,0 +1,44 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+.container {
+    margin-top: 20px;
+}
+.card {
+    margin-bottom: 20px;
+}
+.card-header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border-bottom: none;
+}
+.card-title {
+    margin: 0;
+    font-size: 1.2em;
+}
+.btn-primary, .btn-success, .btn-danger {
+    width: 100%;
+    margin-top: 10px;
+}
+.btn:hover {
+    opacity: 0.8;
+}
+.table {
+    margin-top: 20px;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f2f2f2;
+}
+.table-bordered th, .table-bordered td {
+    border: 1px solid #dee2e6;
+}
+.chart-container {
+    height: 300px;
+    position: relative;
+}
+.chart-container canvas {
+    height: 100% !important;
+}
