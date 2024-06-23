@@ -13,7 +13,7 @@ document.getElementById('registerForm').addEventListener('submit', function(even
     })
     .then(response => {
         if (response.status === 201) {
-            alert('User registered successfully');
+            alert('登録が完了しました');
             window.location.href = 'login.html'; // 登録成功後にログインページにリダイレクト
         } else {
             return response.json().then(data => { throw new Error(data.error) });

@@ -16,7 +16,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
             localStorage.setItem('token', data.token);
             window.location.href = 'asset_management_app.html'; // ログイン成功後にメインページにリダイレクト
         } else {
-            alert('Invalid credentials');
+            alert('ユーザー名またはパスワードが間違っています');
         }
     })
     .catch(error => {
