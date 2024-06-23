@@ -6,6 +6,33 @@ var expenseChart = null;
 var monthlyBalanceChart = null;
 var token = null;
 
+document.addEventListener('DOMContentLoaded', function() {
+    token = localStorage.getItem('token');
+    if (token) {
+        loadTransactions();
+    } else {
+        window.location.href = 'login.html';  // トークンがない場合はログインページにリダイレクト
+    }
+});
+
+function loadTransactions() {
+    fetch('/transactions?token=' + token, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + token
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        historyData = data;
+        displayHistory();
+        updateGraphs();
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+
 // ユーザー登録
 function registerUser() {
     var username = document.getElementById("registerUsername").value;

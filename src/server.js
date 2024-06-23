@@ -23,7 +23,12 @@ app.use(express.static('public'));
 
 // User registration
 app.post('/register', async (req, res) => {
-    const { username, password } = req.body;
+    const { username, password, confirmPassword } = req.body;
+    
+    if (password !== confirmPassword) {
+        return res.status(400).json({ error: 'Passwords do not match' });
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
     try {
         const result = await pool.query(

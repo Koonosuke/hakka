@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
 </head>
 
 <body>
@@ -36,7 +37,7 @@
                     </div>
                 </div>
             </div> -->
-        <div class="col-md-6 mb-4">
+        <!-- <div class="col-md-6 mb-4">
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">ログイン</h3>
@@ -58,165 +59,165 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <!-- 収入・支出フォーム -->
-    <div class="row">
-        <div class="col-md-6 mb-4">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">収入追加</h3>
-                </div>
-                <div class="card-body">
-                    <form id="incomeForm">
-                        <div class="form-group">
-                            <label for="incomeName">収入名：</label>
-                            <input type="text" id="incomeName" name="incomeName" class="form-control"
-                                placeholder="例：給料">
-                        </div>
-                        <div class="form-group">
-                            <label for="incomeAmount">金額：</label>
-                            <input type="number" id="incomeAmount" name="incomeAmount" class="form-control"
-                                placeholder="例：50000">
-                        </div>
-                        <button type="button" class="btn btn-success" onclick="addIncome()">収入を追加</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-6 mb-4">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">支出追加</h3>
-                </div>
-                <div class="card-body">
-                    <form id="expenseForm">
-                        <div class="form-group">
-                            <label for="expenseName">支出名：</label>
-                            <input type="text" id="expenseName" name="expenseName" class="form-control"
-                                placeholder="例：食費">
-                        </div>
-                        <div class="form-group">
-                            <label for="expenseAmount">金額：</label>
-                            <input type="number" id="expenseAmount" name="expenseAmount" class="form-control"
-                                placeholder="例：3000">
-                        </div>
-                        <div class="form-group">
-                            <label for="expenseType">タイプ：</label>
-                            <select id="expenseType" name="expenseType" class="form-control">
-                                <option value="fixed">固定費</option>
-                                <option value="variable">変動費</option>
-                            </select>
-                        </div>
-                        <button type="button" class="btn btn-danger" onclick="addExpense()">支出を追加</button>
-                    </form>
+        <!-- 収入・支出フォーム -->
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">収入追加</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="incomeForm">
+                            <div class="form-group">
+                                <label for="incomeName">収入名：</label>
+                                <input type="text" id="incomeName" name="incomeName" class="form-control"
+                                    placeholder="例：給料">
+                            </div>
+                            <div class="form-group">
+                                <label for="incomeAmount">金額：</label>
+                                <input type="number" id="incomeAmount" name="incomeAmount" class="form-control"
+                                    placeholder="例：50000">
+                            </div>
+                            <button type="button" class="btn btn-success" onclick="addIncome()">収入を追加</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- 日付指定フォーム -->
-    <div class="card mb-4">
-        <div class="card-header">
-            <h3 class="card-title">日付指定</h3>
-        </div>
-        <div class="card-body">
-            <form id="dateForm">
-                <div class="form-group">
-                    <label for="date">日付：</label>
-                    <input type="date" id="date" name="date" class="form-control">
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- 履歴表示 -->
-    <div class="card mb-4">
-        <div class="card-header">
-            <h3 class="card-title">取引履歴</h3>
-        </div>
-        <div class="card-body">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>日付</th>
-                        <th>名前</th>
-                        <th>金額</th>
-                        <th>タイプ</th>
-                    </tr>
-                </thead>
-                <tbody id="history">
-                    <!-- ここに取引履歴が表示されます -->
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- 合計金額表示 -->
-    <div class="card mb-4">
-        <div class="card-header">
-            <h3 class="card-title">合計金額</h3>
-        </div>
-        <div class="card-body">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>合計収入</th>
-                        <th>合計支出</th>
-                        <th>収支</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td id="totalIncome">¥0</td>
-                        <td id="totalExpense">¥0</td>
-                        <td id="balanceOfPayments">¥0</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- グラフ表示 -->
-    <div class="row">
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title text-center">収入</h3>
-                </div>
-                <div class="card-body">
-                    <div class="chart-container">
-                        <canvas id="incomeChart"></canvas>
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">支出追加</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="expenseForm">
+                            <div class="form-group">
+                                <label for="expenseName">支出名：</label>
+                                <input type="text" id="expenseName" name="expenseName" class="form-control"
+                                    placeholder="例：食費">
+                            </div>
+                            <div class="form-group">
+                                <label for="expenseAmount">金額：</label>
+                                <input type="number" id="expenseAmount" name="expenseAmount" class="form-control"
+                                    placeholder="例：3000">
+                            </div>
+                            <div class="form-group">
+                                <label for="expenseType">タイプ：</label>
+                                <select id="expenseType" name="expenseType" class="form-control">
+                                    <option value="fixed">固定費</option>
+                                    <option value="variable">変動費</option>
+                                </select>
+                            </div>
+                            <button type="button" class="btn btn-danger" onclick="addExpense()">支出を追加</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title text-center">支出</h3>
+
+        <!-- 日付指定フォーム -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="card-title">日付指定</h3>
+            </div>
+            <div class="card-body">
+                <form id="dateForm">
+                    <div class="form-group">
+                        <label for="date">日付：</label>
+                        <input type="date" id="date" name="date" class="form-control">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 履歴表示 -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="card-title">取引履歴</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>日付</th>
+                            <th>名前</th>
+                            <th>金額</th>
+                            <th>タイプ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history">
+                        <!-- ここに取引履歴が表示されます -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 合計金額表示 -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="card-title">合計金額</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>合計収入</th>
+                            <th>合計支出</th>
+                            <th>収支</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="totalIncome">¥0</td>
+                            <td id="totalExpense">¥0</td>
+                            <td id="balanceOfPayments">¥0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- グラフ表示 -->
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title text-center">収入</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="incomeChart"></canvas>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <div class="chart-container">
-                        <canvas id="expenseChart"></canvas>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title text-center">支出</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="expenseChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title text-center">月ごとの収支</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="monthlyBalanceChart"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title text-center">月ごとの収支</h3>
-                </div>
-                <div class="card-body">
-                    <div class="chart-container">
-                        <canvas id="monthlyBalanceChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     </div>
 
     <script src="app.js"></script>
